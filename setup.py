@@ -25,7 +25,8 @@ setup(
     install_requires=[
         'click',
         'requests',
-        'beautifulsoup4'
+        'beautifulsoup4',
+        'mecab-python3'
     ],
     dependency_links=[]
 )
