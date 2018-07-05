@@ -14,22 +14,22 @@ import bs4
 logger = logging.getLogger(__name__)
 
 
-class Spider:
+class Crawler:
     def __init__(self, timeout=None, sleep=None):
         self._timeout = timeout
         self._sleep = sleep
 
-    def walk(self, start_url, max_depth=None):
+    def crawl(self, start_url, max_depth=None):
         crawled_urls = set()
         target_urls = {start_url}
         depth_iterable = itertools.count() if max_depth is None else range(max_depth)
 
         for depth in depth_iterable:
-            logger.info(f'Crawling {len(target_urls):,} URLs at depth-{depth:,}...')
+            logger.info(f'Fetching {len(target_urls):,} pages at depth-{depth:,}...')
             new_target_urls = set()
 
             for url in target_urls:
-                html = self._crawl(url)
+                html = self._fetch(url)
                 crawled_urls.add(url)
 
                 if not html:
@@ -49,7 +49,7 @@ class Spider:
 
             target_urls = new_target_urls
 
-    def _crawl(self, url):
+    def _fetch(self, url):
         try:
             response = requests.get(url, timeout=self._timeout, allow_redirects=False)
             response.encoding = response.apparent_encoding
