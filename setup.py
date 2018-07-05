@@ -23,7 +23,9 @@ setup(
         ]
     },
     install_requires=[
-        'click'
+        'click',
+        'requests',
+        'beautifulsoup4'
     ],
     dependency_links=[]
 )
