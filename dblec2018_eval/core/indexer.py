@@ -54,7 +54,7 @@ class IndexMixin:
 
     def write(self, fout, elems):
         line = '\t'.join(elems)
-        print(line, file=fout)
+        print(line, file=fout, flush=True)
 
 
 class PageIndex(IndexMixin, collections.namedtuple('PageIndex', ['url', 'title', 'body'])):
