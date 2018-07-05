@@ -51,7 +51,7 @@ class Spider:
 
     def _crawl(self, url):
         try:
-            response = requests.get(url, timeout=self._timeout)
+            response = requests.get(url, timeout=self._timeout, allow_redirects=False)
             response.encoding = response.apparent_encoding
         except requests.RequestException as e:
             logger.warning(f'Cannot access ({e.__class__.__name__}): {url}')
