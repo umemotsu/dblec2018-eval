@@ -6,6 +6,7 @@ import logging.config
 import click
 
 from .. import __name__ as pkg_name
+from .tasks import build_dataset
 from .utils import register
 
 
@@ -42,4 +43,4 @@ def cli(log, level):
         logging.config.dictConfig(config)
 
 
-register(cli, [])
+register(cli, [build_dataset])
