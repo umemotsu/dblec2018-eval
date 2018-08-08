@@ -16,7 +16,7 @@ setup(
     author=pkg.__author__,
     author_email=pkg.__email__,
     version=pkg.__version__,
-    pkgs=find_packages(exclude=[]),
+    packages=find_packages(exclude=[]),
     entry_points={
         'console_scripts': [
             f'{cli_name}={cli_path}'
